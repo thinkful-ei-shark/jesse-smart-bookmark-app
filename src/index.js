@@ -1,6 +1,8 @@
 import $ from "jquery";
 import api from "./scripts/api";
+
 import store from "./scripts/store";
+
 import generate from "./scripts/generate";
 
 function main() {

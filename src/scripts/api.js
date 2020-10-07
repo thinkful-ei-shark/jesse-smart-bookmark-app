@@ -1,7 +1,7 @@
 import { post } from "jquery";
 import generate from "./generate";
 
-const BASE_URL = "https://thinkful-list-api.herokuapp.com/JesseSmart";
+const BASE_URL = "https://thinkful-list-api.herokuapp.com/JesseSmart/bookmarks";
 
 async function getBookmarks() {
   try {
