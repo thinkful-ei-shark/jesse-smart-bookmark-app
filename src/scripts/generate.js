@@ -71,19 +71,19 @@ function generateAddPage() {
 <div class = "group">
 <form id ="add-bookmark-form">
 <div class="item-column"
-  <label for ="url">Url Here</label>
-  <input type ="text" id="url" name="url" placeholder="put url here" required>
+  <label for ="url">URL</label>
+  <input type ="text" id="url" name="url" placeholder="URL" required>
 </div> 
 <div class="item-column">
-  <label for = "name">Name</label>
-  <input type="text" placeholder="Nickname" name="name" id="name" required>
+  <label for = "name">NAME</label>
+  <input type="text" placeholder="Site Name" name="name" id="name" required>
 </div>
 <div class="item-column">  
-  <label for = "rating">Rating</label>
-  <input type="text" placeholder="rating 1-5" name="rating" id="rating">
+  <label for = "rating">RATING</label>
+  <input type="text" placeholder="Rating 1-5" name="rating" id="rating">
 </div>
 <div class="item-column">  
-  <label for="desc">Description</label>
+  <label for="desc">DESCRIPTION</label>
   <textarea name="desc" id="desc" rows="4"></textarea>
 </div>
 <div class ="item-column">
