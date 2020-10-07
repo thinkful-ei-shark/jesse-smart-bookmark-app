@@ -43,3 +43,48 @@ function generateBookmarkItem(bookmark) {
     </li>`;
   return bookmarkItem;
 }
+
+function generateBookmarkString(bookmarkList) {
+  const pageHead = generateMainPage();
+  const list = bookmarkList.map((item) => generateBookmarkItem(item));
+  const items = pageHead + list;
+  return items;
+}
+
+function handleNewButton() {
+  $("main").on("submit", "#add-bookmark", function (e) {
+    e.preventDefault();
+    store.store.adding = true;
+    render();
+  });
+}
+
+function generateAddPage() {
+  const addPage = `<h1>
+    My Bookmarks
+</h1>
+<div class = "group">
+<form id ="add-bookmark-form">
+<div class="item-column"
+  <label for ="url">Url Here</label>
+  <input type ="text" id="url" name="url" placeholder="put url here" required>
+</div> 
+<div class="item-column">
+  <label for = "name">Name</label>
+  <input type="text" placeholder="Nickname" name="name" id="name" required>
+</div>
+<div class="item-column">  
+  <label for = "rating">Rating</label>
+  <input type="text" placeholder="rating 1-5" name="rating" id="rating">
+</div>
+<div class="item-column">  
+  <label for="desc">Description</label>
+  <textarea name="desc" id="desc" rows="4">No description</textarea>
+</div>
+<div class ="item-column">
+  <button type ="submit"class = "btn">Add Bookmark</button>
+  </div>
+</form>
+</div>`;
+  return addPage;
+}
