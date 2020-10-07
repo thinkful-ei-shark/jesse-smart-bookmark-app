@@ -84,7 +84,7 @@ function generateAddPage() {
 </div>
 <div class="item-column">  
   <label for="desc">Description</label>
-  <textarea name="desc" id="desc" rows="4">No description</textarea>
+  <textarea name="desc" id="desc" rows="4"></textarea>
 </div>
 <div class ="item-column">
   <button type ="submit"class = "btn">Add Bookmark</button>
