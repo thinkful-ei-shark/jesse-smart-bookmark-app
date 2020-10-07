@@ -1,10 +1,10 @@
-import $ from "jquery";
-
 function main() {
-  console.log("DOM is loaded");
-
-  const startMsg = $("<p>Webpack is working!</p>");
-  $("#root").append(startMsg);
+  api.getBookmarks().then((items) => {
+    items.forEach((item) => store.addItem(item));
+    generate.render();
+  });
+  generate.render();
+  generate.bindEventListeners();
 }
 
 $(main);
