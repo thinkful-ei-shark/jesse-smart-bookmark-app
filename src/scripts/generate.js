@@ -1,3 +1,8 @@
+import $ from "jquery";
+import style from "../style.css";
+import api from "./api";
+import store from "./store";
+
 function generateMainPage() {
   const mainPage = `
         <h1>
@@ -158,3 +163,8 @@ function bindEventListeners() {
   handleDeleteButton();
   handleFilter();
 }
+
+export default {
+  bindEventListeners,
+  render,
+};
