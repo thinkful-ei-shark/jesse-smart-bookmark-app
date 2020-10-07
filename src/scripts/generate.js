@@ -88,3 +88,73 @@ function generateAddPage() {
 </div>`;
   return addPage;
 }
+
+function getIdFromElement(item) {
+  return $(item).parent().parent().attr("data-item-id");
+}
+
+function handleExpandButton() {
+  $("main").on("click", "li", function (e) {
+    $(this).children(".bottom-row").toggleClass("hidden");
+  });
+}
+
+function handleDeleteButton() {
+  $("main").on("click", "#delete", function (e) {
+    e.preventDefault();
+    const id = getIdFromElement(e.currentTarget);
+    api.deleteBookmark(id).then(() => {
+      store.findAndDelete(id);
+      render();
+    });
+  });
+}
+
+function handleFilter() {
+  $("main").on("click", "#filter", function (e) {
+    e.preventDefault();
+    const filterNum = $("#filter-button").val();
+    store.store.filter = filterNum;
+    render();
+  });
+}
+
+function filterBookmarks(bookmarks) {
+  return bookmarks.filter((item) => {
+    return item.rating >= store.store.filter;
+  });
+}
+
+function handleBookmarkSubmit() {
+  $("main").on("submit", "#add-bookmark-form", function (e) {
+    e.preventDefault();
+    let urlName = $("#url").val();
+    let name = $("#name").val();
+    let rating = $("#rating").val();
+    let desc = $("#desc").val();
+    api.postBookmark(name, urlName, rating, desc).then((data) => {
+      store.addItem(data);
+      store.store.adding = false;
+      render();
+    });
+  });
+}
+
+function render() {
+  let bookmarksCall = filterBookmarks(store.store.bookmarks);
+  let page = "";
+  if (store.store.adding === false) {
+    page += generateBookmarkString(bookmarksCall);
+  } else {
+    page += generateAddPage();
+  }
+  $("main").html(page);
+}
+
+function bindEventListeners() {
+  handleBookmarkSubmit();
+  handleNewButton();
+  handleExpandButton();
+  handleDeleteButton();
+  handleFilter();
+}
