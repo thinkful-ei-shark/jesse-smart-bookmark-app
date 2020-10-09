@@ -17,15 +17,14 @@ function generateMainPage() {
             <form id="filter-form">
             <div class ="item">
                 <select name="filter" class ="btn" id="filter-button">
+                    <option disabled selected hidden>Filter by</option>
                     <option id="filter1" value="1">Show 1+</option>
                     <option id="filter2" value="2">Show 2+</option>
                     <option id="filter3" value="3">Show 3+</option>
                     <option id="filter4" value="4">Show 4+</option>
                     <option id="filter5" value="5">Show 5</option>
                 </select>
-            </div>
-        <div class="item">
-            <button type="button" id="filter" class = "btn">Filter</button>
+            
         </div>
         </form>
         </div>`;
@@ -80,11 +79,11 @@ function generateAddPage() {
 </div>
 <div class="item-column">  
   <label for = "rating">RATING</label>
-  <input type="text" placeholder="Rating 1-5" name="rating" id="rating">
+  <input type="number" min="1" max="5" placeholder="1-5" name="rating" id="rating" required>
 </div>
 <div class="item-column">  
   <label for="desc">DESCRIPTION</label>
-  <textarea name="desc" id="desc" rows="4"></textarea>
+  <textarea name="desc" id="desc" rows="4" required></textarea>
 </div>
 <div class ="item-column">
   <button type ="submit"class = "btn">Add Bookmark</button>
@@ -116,7 +115,7 @@ function handleDeleteButton() {
 }
 
 function handleFilter() {
-  $("main").on("click", "#filter", function (e) {
+  $("main").on("change", "#filter-button", function (e) {
     e.preventDefault();
     const filterNum = $("#filter-button").val();
     store.store.filter = filterNum;
